@@ -1,0 +1,35 @@
+@model IEnumerable<CodeFirstEmptyController.Models.Author>
+
+@{
+    ViewData["Title"] = "Authors List";
+}
+
+<h2>Authors</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Author</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Author ID</th>
+            <th>Author Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AuthId</td>
+            <td>@item.AuthName</td>
+            <td>
+                <a asp-controller="Authors" asp-action="Edit" asp-route-id="@item.AuthId" class="btn btn-warning btn-sm">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AuthId" class="btn btn-sm btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AuthId" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,131 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Edit Records";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<!-- ================= STUDENT ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        Edit Student
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" asp-controller="Students" method="post">
+            <input type="hidden" name="StudId" value="@Model?.StudId" />
+
+            <div class="mb-3">
+                <label class="form-label">Student Name</label>
+                <input name="StudName" class="form-control" placeholder="Enter student name" value="@Model?.StudName" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Department</label>
+                <select name="DeptId" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.Departments, "DeptId", "DeptName", Model?.DeptId))">
+                    <option value="">-- Select Department --</option>
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save</button>
+                <a asp-action="Index" asp-controller="Students" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ================= DEPARTMENT ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-info text-white">
+        Edit Department
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" asp-controller="Departments" method="post">
+            <input type="hidden" name="DeptId" value="@Model?.DeptId" />
+
+            <div class="mb-3">
+                <label class="form-label">Department Name</label>
+                <input name="DeptName" class="form-control" placeholder="Enter department name" value="@Model?.DeptName" />
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save</button>
+                <a asp-action="Index" asp-controller="Departments" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ================= TEACHER ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-warning text-dark">
+        Edit Teacher
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" asp-controller="Teachers" method="post">
+            <input type="hidden" name="TId" value="@Model?.TId" />
+
+            <div class="mb-3">
+                <label class="form-label">Teacher Name</label>
+                <input name="TName" class="form-control" placeholder="Enter teacher name" value="@Model?.TName" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Department</label>
+                <select name="DeptId" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.Departments, "DeptId", "DeptName", Model?.DeptId))">
+                    <option value="">-- Select Department --</option>
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save</button>
+                <a asp-action="Index" asp-controller="Teachers" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ================= COURSE ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-secondary text-white">
+        Edit Course
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" asp-controller="Courses" method="post">
+            <input type="hidden" name="CourseId" value="@Model?.CourseId" />
+
+            <div class="mb-3">
+                <label class="form-label">Course Name</label>
+                <input name="CourseName" class="form-control" placeholder="Enter course name" value="@Model?.CourseName" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Department</label>
+                <select name="DeptId" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.Departments, "DeptId", "DeptName", Model?.DeptId))">
+                    <option value="">-- Select Department --</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Teacher</label>
+                <select name="TId" class="form-select"
+                        asp-items="@(new SelectList(ViewBag.Teachers, "TId", "TName", Model?.TId))">
+                    <option value="">-- Select Teacher --</option>
+                </select>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Save</button>
+                <a asp-action="Index" asp-controller="Courses" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,224 @@
+@model IEnumerable<MyMvcApp1.Models.Student>
+
+@{
+    ViewData["Title"] = "Students List with All Tables";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<!-- ===================== Students Table ===================== -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">
+        Students
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.StudId</td>
+                    <td>@s.StudName</td>
+                    <td>@s.Dept?.DeptName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@s.StudId" class="btn btn-sm btn-success me-1">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@s.StudId" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <a asp-action="Create" class="btn btn-primary mt-2"><i class="bi bi-plus-circle"></i> Add New Student</a>
+    </div>
+</div>
+
+<!-- ===================== Departments Table ===================== -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-secondary text-white">
+        Departments
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Dept Id</th>
+                    <th>Dept Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (ViewBag.Departments != null)
+            {
+                foreach (var d in ViewBag.Departments)
+                {
+                    <tr>
+                        <td>@d.DeptId</td>
+                        <td>@d.DeptName</td>
+                        <td>
+                            <a asp-controller="Departments" asp-action="Edit" asp-route-id="@d.DeptId" class="btn btn-sm btn-success me-1">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="Departments" asp-action="Delete" asp-route-id="@d.DeptId" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+        <a asp-controller="Departments" asp-action="Create" class="btn btn-secondary mt-2">
+            <i class="bi bi-plus-circle"></i> Add New Department
+        </a>
+    </div>
+</div>
+
+<!-- ===================== Teachers Table ===================== -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-info text-white">
+        Teachers
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Teacher Id</th>
+                    <th>Teacher Name</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (ViewBag.Teachers != null)
+            {
+                foreach (var t in ViewBag.Teachers)
+                {
+                    <tr>
+                        <td>@t.TId</td>
+                        <td>@t.TName</td>
+                        <td>@t.Dept?.DeptName</td>
+                        <td>
+                            <a asp-controller="Teachers" asp-action="Edit" asp-route-id="@t.TId" class="btn btn-sm btn-success me-1">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="Teachers" asp-action="Delete" asp-route-id="@t.TId" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+        <a asp-controller="Teachers" asp-action="Create" class="btn btn-info mt-2">
+            <i class="bi bi-plus-circle"></i> Add New Teacher
+        </a>
+    </div>
+</div>
+
+<!-- ===================== Courses Table ===================== -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-warning text-dark">
+        Courses
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Course Id</th>
+                    <th>Course Name</th>
+                    <th>Department</th>
+                    <th>Teacher</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (ViewBag.Courses != null)
+            {
+                foreach (var c in ViewBag.Courses)
+                {
+                    <tr>
+                        <td>@c.CourseId</td>
+                        <td>@c.CourseName</td>
+                        <td>@c.Dept?.DeptName</td>
+                        <td>@c.TIdNavigation?.TName</td>
+                        <td>
+                            <a asp-controller="Courses" asp-action="Edit" asp-route-id="@c.CourseId" class="btn btn-sm btn-success me-1">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-controller="Courses" asp-action="Delete" asp-route-id="@c.CourseId" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+        <a asp-controller="Courses" asp-action="Create" class="btn btn-warning mt-2">
+            <i class="bi bi-plus-circle"></i> Add New Course
+        </a>
+    </div>
+</div>
+
+<!-- ===================== Combined Table ===================== -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-dark text-white">
+        Combined Table (Student + Department + Teachers + Courses)
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Department</th>
+                    <th>Teachers</th>
+                    <th>Courses</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.StudName (@s.StudId)</td>
+                    <td>@s.Dept?.DeptName</td>
+                    <td>
+                        @if (s.Dept?.Teachers != null && s.Dept.Teachers.Any())
+                        {
+                            <ul class="mb-0">
+                                @foreach (var t in s.Dept.Teachers)
+                                {
+                                    <li>@t.TName</li>
+                                }
+                            </ul>
+                        }
+                    </td>
+                    <td>
+                        @if (s.Dept?.Courses != null && s.Dept.Courses.Any())
+                        {
+                            <ul class="mb-0">
+                                @foreach (var c in s.Dept.Courses)
+                                {
+                                    <li>@c.CourseName</li>
+                                }
+                            </ul>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+@page
+@model TeacherModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Teacher Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+
+        .navbar {
+            background: #2c3e50;
+            padding: 12px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a { color: white; margin-left: 15px; text-decoration: none; font-weight: bold; }
+        .navbar a:hover { text-decoration: underline; }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            margin-top: 30px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .container { padding: 20px; }
+        h2 { color: #2c3e50; }
+
+        .message { padding: 8px; margin-bottom: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+
+        .search-box { margin-bottom: 15px; }
+        input[type="text"], input[type="number"] {
+            padding: 6px; margin: 5px 0; width: 250px;
+            border-radius: 4px; border: 1px solid #ccc;
+        }
+        button, .btn-link {
+            padding: 6px 12px; border: none; border-radius: 4px;
+            cursor: pointer; text-decoration: none; display: inline-block;
+        }
+        button { background: #3498db; color: white; }
+        button:hover { background: #2980b9; }
+        .btn-link { background: #95a5a6; color: white; }
+        .btn-link:hover { background: #7f8c8d; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; background: white; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #3498db; color: white; }
+        tr:hover { background: #f1f1f1; }
+        .actions button { margin-right: 5px; background: #2ecc71; }
+        .actions button.delete { background: #e74c3c; }
+    </style>
+    <script>
+        function confirmDelete() {
+            return confirm('Delete this teacher?');
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div><strong>College Portal</strong></div>
+        <div>
+            <a href="/Students">Students</a>
+            <a href="/Department">Departments</a>
+            <a href="/Teacher">Teachers</a>
+            <a href="/Signin">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Teacher Management</h2>
+        <p>Total Teachers: <b>@Model.TeacherCount</b></p>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Message)) { <div class="message success">@Model.Message</div> }
+        @if (!string.IsNullOrWhiteSpace(Model.Error)) { <div class="message error">@Model.Error</div> }
+
+        <form method="get" class="search-box">
+            <input type="text" name="SearchTerm" value="@Model.SearchTerm" placeholder="Search by Teacher or Department..." />
+            <button type="submit">Search</button>
+            <a href="/Teacher" class="btn-link">Clear</a>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Teacher Id</th>
+                    <th>Teacher Name</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Teachers.Any())
+            {
+                foreach (var t in Model.Teachers)
+                {
+                    <tr>
+                        <td>@t.TeacherId</td>
+                        <td>@t.TeacherName</td>
+                        <td>@t.DeptName</td>
+                        <td class="actions">
+                            <form method="post" asp-page-handler="Edit" style="display:inline">
+                                <input type="hidden" name="id" value="@t.TeacherId" />
+                                <button type="submit">Edit</button>
+                            </form>
+                            <form method="post" asp-page-handler="Delete" style="display:inline" onsubmit="return confirmDelete();">
+                                <input type="hidden" name="id" value="@t.TeacherId" />
+                                <button type="submit" class="delete">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else { <tr><td colspan="4">No teachers found.</td></tr> }
+            </tbody>
+        </table>
+
+        <hr />
+        <h2>@(Model.EditMode ? "Edit Teacher" : "Add Teacher")</h2>
+        <form method="post" asp-page-handler="Save">
+            <input type="hidden" name="EditMode" value="@(Model.EditMode ? "true" : "false")" />
+
+            <label>Teacher Id:</label><br />
+            <input type="number" name="TeacherId" value="@(Model.TeacherId == 0 ? "" : Model.TeacherId.ToString())"
+                   @(Model.EditMode ? "readonly" : "") required /><br /><br />
+
+            <label>Teacher Name:</label><br />
+            <input type="text" name="TeacherName" value="@Model.TeacherName" required /><br /><br />
+
+            <label>Department Id:</label><br />
+            <input type="number" name="DeptId" value="@(Model.DeptId?.ToString() ?? "")" /><br /><br />
+
+            <button type="submit">@(Model.EditMode ? "Update" : "Add")</button>
+            @if (Model.EditMode) { <a href="/Teacher" class="btn-link" style="margin-left:8px;">Cancel</a> }
+        </form>
+    </div>
+</body>
+</html>

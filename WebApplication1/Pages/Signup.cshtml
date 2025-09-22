@@ -1,0 +1,64 @@
+@page
+@model YourApp.Pages.SignupModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4 rounded-3">
+                <h2 class="text-center text-primary mb-4">Create Account</h2>
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" asp-for="Username" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" asp-for="Email" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" asp-for="Password" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+
+                <p class="text-danger mt-3">@Model.Message</p>
+                <p class="text-center mt-3">
+                    Already have an account? <a asp-page="/Signin">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">✅ Sign Up Successful</h5>
+            </div>
+            <div class="modal-body">
+                Your account has been created successfully. Redirecting to Sign In...
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var isSuccess = "@Model.IsSuccess".toLowerCase();
+            if (isSuccess === "true") {
+                var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+                myModal.show();
+
+                setTimeout(function () {
+                    window.location.href = '/Signin';
+                }, 2000);
+            }
+        });
+    </script>
+}

@@ -1,0 +1,14 @@
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.AssemblyInfoInputs.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.AssemblyInfo.cs
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.csproj.CoreCompileInputs.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/bin/Debug/net9.0/UnitTesting
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/bin/Debug/net9.0/UnitTesting.deps.json
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/bin/Debug/net9.0/UnitTesting.runtimeconfig.json
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/bin/Debug/net9.0/UnitTesting.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/bin/Debug/net9.0/UnitTesting.pdb
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/refint/UnitTesting.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.pdb
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/UnitTesting.genruntimeconfig.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/UnitTesting/obj/Debug/net9.0/ref/UnitTesting.dll

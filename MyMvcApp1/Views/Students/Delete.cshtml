@@ -1,0 +1,77 @@
+@{
+    ViewData["Title"] = "Delete Records";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<!-- ================= STUDENT ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-danger text-white">
+        Delete Student
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete this student?</p>
+        <p><strong>@Model.StudName</strong> (ID: @Model.StudId)</p>
+        <p>Department: @Model.Dept?.DeptName</p>
+
+        <form asp-action="Delete" asp-controller="Students" method="post">
+            <input type="hidden" name="id" value="@Model.StudId" />
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+            <a asp-action="Index" asp-controller="Students" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+        </form>
+    </div>
+</div>
+
+<!-- ================= DEPARTMENT ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-danger text-white">
+        Delete Department
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete this department?</p>
+        <p><strong>@Model?.DeptName</strong> (ID: @Model?.DeptId)</p>
+
+        <form asp-action="DeleteConfirmed" asp-controller="Departments" method="post">
+            <input type="hidden" name="DeptId" value="@Model?.DeptId" />
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+            <a asp-action="Index" asp-controller="Departments" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+        </form>
+    </div>
+</div>
+
+<!-- ================= TEACHER ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-danger text-white">
+        Delete Teacher
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete this teacher?</p>
+        <p><strong>@Model?.TName</strong> (ID: @Model?.TId)</p>
+        <p>Department: @Model?.Dept?.DeptName</p>
+
+        <form asp-action="DeleteConfirmed" asp-controller="Teachers" method="post">
+            <input type="hidden" name="TId" value="@Model?.TId" />
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+            <a asp-action="Index" asp-controller="Teachers" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+        </form>
+    </div>
+</div>
+
+<!-- ================= COURSE ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-danger text-white">
+        Delete Course
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete this course?</p>
+        <p><strong>@Model?.CourseName</strong> (ID: @Model?.CourseId)</p>
+        <p>Department: @Model?.Dept?.DeptName</p>
+        <p>Teacher: @Model?.TIdNavigation?.TName</p>
+
+        <form asp-action="DeleteConfirmed" asp-controller="Courses" method="post">
+            <input type="hidden" name="CourseId" value="@Model?.CourseId" />
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+            <a asp-action="Index" asp-controller="Courses" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancel</a>
+        </form>
+    </div>
+</div>
