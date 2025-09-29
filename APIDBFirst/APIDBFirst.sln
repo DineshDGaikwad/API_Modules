@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIDBFirst", "APIDBFirst.csproj", "{045C9BA3-9BA6-A5ED-F2B3-2A0CF8B2F1EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{045C9BA3-9BA6-A5ED-F2B3-2A0CF8B2F1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{045C9BA3-9BA6-A5ED-F2B3-2A0CF8B2F1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{045C9BA3-9BA6-A5ED-F2B3-2A0CF8B2F1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{045C9BA3-9BA6-A5ED-F2B3-2A0CF8B2F1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {501FC0D2-0CA4-47E6-9EF0-CADE8709AEEF}
+	EndGlobalSection
+EndGlobal

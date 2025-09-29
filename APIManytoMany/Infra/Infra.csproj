@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APIManytoMany.Data\APIManytoMany.Data.csproj" />
+    <ProjectReference Include="..\APIManytoMany.Domain\APIManytoMany.Domain.csproj" />
+    <!-- <ProjectReference Include="..\APIManytoMany.Domain.csproj" /> -->
+    <!-- <ProjectReference Include="..\APIManytoMany.Infrastructure\APIManytoMany.Infrastructure.csproj" /> -->
+    <ProjectReference Include="..\APIManytoMany.Application\APIManytoMany.Application.csproj" />
+    <!-- <ProjectReference Include="..\Infra\Infra.csproj" /> -->
+  </ItemGroup>
+  
+
+</Project>

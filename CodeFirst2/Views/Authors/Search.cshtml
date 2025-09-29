@@ -1,0 +1,39 @@
+@model IEnumerable<CodeFirstEmptyController.Models.Author>
+
+@{
+    ViewData["Title"] = "Search Authors";
+}
+
+<h2>Search Authors</h2>
+
+<form asp-action="Search" method="get">
+    <input type="text" name="keyword" placeholder="Enter author name..." class="form-control" />
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+<hr />
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Author ID</th>
+                <th>Author Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.AuthId</td>
+                <td>@author.AuthName</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-danger mt-3">No authors found.</p>
+}

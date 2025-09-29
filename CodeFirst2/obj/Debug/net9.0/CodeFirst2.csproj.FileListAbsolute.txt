@@ -336,3 +336,4 @@
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/CodeFirst2/obj/Debug/net9.0/CodeFirst2.pdb
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/CodeFirst2/obj/Debug/net9.0/CodeFirst2.genruntimeconfig.cache
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/CodeFirst2/obj/Debug/net9.0/ref/CodeFirst2.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/CodeFirst2/obj/Debug/net9.0/CodeFirst2.sourcelink.json

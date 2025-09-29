@@ -1,0 +1,6 @@
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Infrastructure/obj/Debug/net9.0/APIManytoMany.Infrastructure.csproj.AssemblyReference.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Infrastructure/obj/Debug/net9.0/APIManytoMany.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Infrastructure/obj/Debug/net9.0/APIManytoMany.Infrastructure.AssemblyInfoInputs.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Infrastructure/obj/Debug/net9.0/APIManytoMany.Infrastructure.AssemblyInfo.cs
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Infrastructure/obj/Debug/net9.0/APIManytoMany.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Infrastructure/obj/Debug/net9.0/APIManytoMany.Infrastructure.sourcelink.json

@@ -1,0 +1,12 @@
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/bin/Debug/net9.0/APIManytoMany.Application.deps.json
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/bin/Debug/net9.0/APIManytoMany.Application.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/bin/Debug/net9.0/APIManytoMany.Application.pdb
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.AssemblyInfoInputs.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.AssemblyInfo.cs
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.csproj.CoreCompileInputs.cache
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.sourcelink.json
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/refint/APIManytoMany.Application.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/APIManytoMany.Application.pdb
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIManytoMany/APIManytoMany.Application/obj/Debug/net9.0/ref/APIManytoMany.Application.dll
