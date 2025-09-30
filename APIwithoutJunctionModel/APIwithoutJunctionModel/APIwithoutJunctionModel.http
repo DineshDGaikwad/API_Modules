@@ -1,0 +1,6 @@
+@APIwithoutJunctionModel_HostAddress = http://localhost:5033
+
+GET {{APIwithoutJunctionModel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

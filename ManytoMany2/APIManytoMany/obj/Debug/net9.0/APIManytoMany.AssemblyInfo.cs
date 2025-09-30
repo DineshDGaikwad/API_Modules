@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIManytoMany")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+964665489588a4742a89533e7630bc8578fb0203")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+235242b952b5dc6eb2ff9e5f028dc8e408950afa")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIManytoMany")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIManytoMany")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
