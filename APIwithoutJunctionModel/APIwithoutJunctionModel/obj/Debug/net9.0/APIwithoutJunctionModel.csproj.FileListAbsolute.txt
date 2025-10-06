@@ -164,3 +164,4 @@
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIwithoutJunctionModel/APIwithoutJunctionModel/obj/Debug/net9.0/APIwithoutJunctionModel.pdb
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIwithoutJunctionModel/APIwithoutJunctionModel/obj/Debug/net9.0/APIwithoutJunctionModel.genruntimeconfig.cache
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIwithoutJunctionModel/APIwithoutJunctionModel/obj/Debug/net9.0/ref/APIwithoutJunctionModel.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIwithoutJunctionModel/APIwithoutJunctionModel/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

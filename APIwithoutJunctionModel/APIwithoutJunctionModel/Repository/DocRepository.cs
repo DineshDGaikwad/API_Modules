@@ -33,10 +33,12 @@ namespace APIwithoutJunctionModel.Repository
             await _context.Doctors.AddAsync(doctor);
         }
 
-        public async Task UpdateAsync(Doctor doctor)
+        public Task UpdateAsync(Doctor doctor)
         {
             _context.Doctors.Update(doctor);
+            return Task.CompletedTask;
         }
+
 
         public async Task DeleteAsync(int id)
         {

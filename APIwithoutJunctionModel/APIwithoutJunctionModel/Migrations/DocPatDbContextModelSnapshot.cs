@@ -70,6 +70,31 @@ namespace APIwithoutJunctionModel.Migrations
                     b.ToTable("Patients");
                 });
 
+            modelBuilder.Entity("APIwithoutJunctionModel.Models.User", b =>
+                {
+                    b.Property<int>("userId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userId"));
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("userName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("userId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("DoctorPatient", b =>
                 {
                     b.Property<int>("DoctorsDoctorId")
