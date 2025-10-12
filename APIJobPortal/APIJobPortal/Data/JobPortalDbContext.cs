@@ -126,6 +126,8 @@ namespace APIJobPortal.Data
                     RegisteredAt = new DateTime(2025, 1, 1)
                 }
             );
+
+
         }
     }
 }

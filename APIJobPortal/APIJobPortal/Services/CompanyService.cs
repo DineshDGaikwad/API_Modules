@@ -1,7 +1,7 @@
 using APIJobPortal.DTOs.Company;
+using APIJobPortal.Interfaces.Repositories;
 using APIJobPortal.Interfaces.Services;
 using APIJobPortal.Models;
-using APIJobPortal.Interfaces.Repositories;
 
 namespace APIJobPortal.Services
 {

@@ -22,6 +22,16 @@ namespace APIJobPortal.Services
         // Register new JobSeeker or Company
         public async Task<AuthResponseDTO> RegisterAsync(RegisterDTO dto)
         {
+                    // Validate role explicitly to avoid accidental registrations
+            if (string.IsNullOrWhiteSpace(dto.Role))
+                throw new Exception("Role is required. Use 'JobSeeker' or 'Company'.");
+
+            var normalizedRole = dto.Role.Trim();
+            if (!normalizedRole.Equals("JobSeeker", StringComparison.OrdinalIgnoreCase) &&
+                !normalizedRole.Equals("Company", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new Exception("Invalid role. Allowed values: 'JobSeeker', 'Company'.");
+            }
             // Check if email already exists
             if (await _context.JobSeekers.AnyAsync(js => js.Email == dto.Email) ||
                 await _context.Companies.AnyAsync(c => c.Email == dto.Email))
@@ -32,11 +42,14 @@ namespace APIJobPortal.Services
             // Hash password
             string hashed = PasswordHasher.HashPassword(dto.Password);
 
-            // Get JWT secret from configuration
+            // Get JWT settings from configuration
             string secret = _config["Jwt:Secret"] 
                 ?? throw new Exception("JWT Secret is not configured in appsettings.json");
+            string? issuer = _config["Jwt:Issuer"];
+            string? audience = _config["Jwt:Audience"];
+            int expiryMinutes = int.TryParse(_config["Jwt:ExpiryMinutes"], out var m) ? m : 60;
 
-            if (dto.Role == "Company")
+            if (normalizedRole.Equals("Company", StringComparison.OrdinalIgnoreCase))
             {
                 var company = new Company
                 {
@@ -48,7 +61,7 @@ namespace APIJobPortal.Services
                 _context.Companies.Add(company);
                 await _context.SaveChangesAsync();
 
-                string token = JwtHelper.GenerateToken(company.CompanyId, company.Email!, "Company", secret);
+                string token = JwtHelper.GenerateToken(company.CompanyId, company.Email!, "Company", secret, expiryMinutes, issuer, audience);
                 return new AuthResponseDTO 
                 { 
                     Token = token, 
@@ -70,7 +83,7 @@ namespace APIJobPortal.Services
                 _context.JobSeekers.Add(seeker);
                 await _context.SaveChangesAsync();
 
-                string token = JwtHelper.GenerateToken(seeker.JobSeekerId, seeker.Email!, "JobSeeker", secret);
+                string token = JwtHelper.GenerateToken(seeker.JobSeekerId, seeker.Email!, "JobSeeker", secret, expiryMinutes, issuer, audience);
                 return new AuthResponseDTO 
                 { 
                     Token = token, 
@@ -86,6 +99,9 @@ namespace APIJobPortal.Services
         {
             string secret = _config["Jwt:Secret"] 
                 ?? throw new Exception("JWT Secret is not configured in appsettings.json");
+            string? issuer = _config["Jwt:Issuer"];
+            string? audience = _config["Jwt:Audience"];
+            int expiryMinutes = int.TryParse(_config["Jwt:ExpiryMinutes"], out var m) ? m : 60;
 
             // Check JobSeeker login
             var seeker = await _context.JobSeekers.FirstOrDefaultAsync(js => js.Email == dto.Email);
@@ -105,7 +121,8 @@ namespace APIJobPortal.Services
             var company = await _context.Companies.FirstOrDefaultAsync(c => c.Email == dto.Email);
             if (company != null)
             {
-                string token = JwtHelper.GenerateToken(company.CompanyId, company.Email!, "Company", secret);
+                // If company has a password stored in future, verify here. For now generate token if email exists.
+                string token = JwtHelper.GenerateToken(company.CompanyId, company.Email!, "Company", secret, expiryMinutes, issuer, audience);
                 return new AuthResponseDTO 
                 { 
                     Token = token, 

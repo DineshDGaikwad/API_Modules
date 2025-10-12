@@ -23,8 +23,8 @@ namespace APIJobPortal.Services
                 Location = dto.Location,
                 Type = dto.Type,
                 Salary = dto.Salary,
-                PostedDate = DateTime.UtcNow,
-                ExpiryDate = dto.ExpiryDate,
+                PostedDate = DateTime.UtcNow,   
+                ExpiryDate = dto.ExpiryDate ?? DateTime.UtcNow.AddMonths(1), 
                 RequiredExperience = dto.RequiredExperience
             };
 
@@ -39,7 +39,7 @@ namespace APIJobPortal.Services
                 Type = job.Type,
                 Salary = job.Salary,
                 PostedDate = job.PostedDate,
-                ExpiryDate = job.ExpiryDate,
+                ExpiryDate = job.ExpiryDate,   
                 RequiredExperience = job.RequiredExperience
             };
         }
@@ -52,6 +52,7 @@ namespace APIJobPortal.Services
         public async Task<IEnumerable<GetJobDTO>> GetAllJobsAsync()
         {
             var jobs = await _jobRepo.GetAllAsync();
+
             return jobs.Select(j => new GetJobDTO
             {
                 JobId = j.JobId,

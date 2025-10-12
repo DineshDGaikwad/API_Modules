@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 
-
 namespace APIJobPortal.Models
 {
     public class Company
@@ -30,6 +29,5 @@ namespace APIJobPortal.Models
 
         public List<JobApplication> JobApplications { get; set; } = new(); 
         public List<CompanyJob> CompanyJobs { get; set; } = new();          
-
     }
 }

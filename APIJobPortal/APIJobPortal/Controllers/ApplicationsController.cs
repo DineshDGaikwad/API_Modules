@@ -15,35 +15,35 @@ namespace APIJobPortal.Controllers
         {
             _applicationService = applicationService;
         }
+        
+        [Authorize(Roles = "Company,JobSeeker")]
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateApplicationDTO dto)
+        {
+            var result = await _applicationService.CreateApplicationAsync(dto);
+            return Ok(result);
+        }
+
 
         [HttpGet]
-        public async Task<IActionResult> GetAllApplications()
+        public async Task<IActionResult> GetAll()
         {
-            var apps = await _applicationService.GetAllApplicationsAsync();
-            return Ok(apps);
+            var result = await _applicationService.GetAllApplicationsAsync();
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetApplicationById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var app = await _applicationService.GetApplicationByIdAsync(id);
-            if (app == null) return NotFound();
-            return Ok(app);
+            var result = await _applicationService.GetApplicationByIdAsync(id);
+            if (result == null) return NotFound();
+            return Ok(result);
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationDTO dto)
-        {
-            var app = await _applicationService.CreateApplicationAsync(dto);
-            return CreatedAtAction(nameof(GetApplicationById), new { id = app.ApplicationId }, app);
-        }
-
-        [Authorize]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteApplication(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            bool deleted = await _applicationService.DeleteApplicationAsync(id);
+            var deleted = await _applicationService.DeleteApplicationAsync(id);
             if (!deleted) return NotFound();
             return NoContent();
         }

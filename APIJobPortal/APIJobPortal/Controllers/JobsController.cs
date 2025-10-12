@@ -15,14 +15,14 @@ namespace APIJobPortal.Controllers
         {
             _jobService = jobService;
         }
-
+        
+        [Authorize(Roles = "JobSeeker")]
         [HttpGet]
         public async Task<IActionResult> GetAllJobs()
         {
             var jobs = await _jobService.GetAllJobsAsync();
             return Ok(jobs);
         }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetJobById(int id)
         {
@@ -31,8 +31,7 @@ namespace APIJobPortal.Controllers
             return Ok(job);
         }
 
-       
-        [Authorize(Roles = "Company")] // Only companies can create jobs
+        [Authorize(Roles = "Company")]
         [HttpPost]
         public async Task<IActionResult> CreateJob([FromBody] CreateJobDTO dto)
         {
@@ -40,7 +39,6 @@ namespace APIJobPortal.Controllers
             return CreatedAtAction(nameof(GetJobById), new { id = job.JobId }, job);
         }
 
-        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJob(int id)
         {

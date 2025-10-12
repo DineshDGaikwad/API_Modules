@@ -16,6 +16,7 @@ namespace APIJobPortal.Controllers
             _companyService = companyService;
         }
 
+        // Public endpoints
         [HttpGet]
         public async Task<IActionResult> GetAllCompanies()
         {
@@ -31,7 +32,8 @@ namespace APIJobPortal.Controllers
             return Ok(company);
         }
 
-        [Authorize]
+        // Protected endpoints (only companies can create/delete)
+        [Authorize(Roles = "Company")]
         [HttpPost]
         public async Task<IActionResult> CreateCompany([FromBody] CreateCompanyDTO dto)
         {
@@ -39,7 +41,7 @@ namespace APIJobPortal.Controllers
             return CreatedAtAction(nameof(GetCompanyById), new { id = company.CompanyId }, company);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Company")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany(int id)
         {
