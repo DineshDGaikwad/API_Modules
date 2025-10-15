@@ -166,3 +166,5 @@
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIJobPortal/APIJobPortal/obj/Debug/net9.0/ref/APIJobPortal.dll
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIJobPortal/APIJobPortal/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIJobPortal/APIJobPortal/bin/Debug/net9.0/BCrypt.Net-Next.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIJobPortal/APIJobPortal/bin/Debug/net9.0/AutoMapper.dll
+/Users/dineshgaikwad/Desktop/KANINI/DotNet Module/ADO.NET/APIJobPortal/APIJobPortal/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -2,44 +2,31 @@ using APIJobPortal.DTOs.Company;
 using APIJobPortal.Interfaces.Repositories;
 using APIJobPortal.Interfaces.Services;
 using APIJobPortal.Models;
+using AutoMapper;
 
 namespace APIJobPortal.Services
 {
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepo _companyRepo;
+        private readonly IMapper _mapper;
 
-        public CompanyService(ICompanyRepo companyRepo)
+        public CompanyService(ICompanyRepo companyRepo, IMapper mapper)
         {
             _companyRepo = companyRepo;
+            _mapper = mapper;
         }
 
         public async Task<GetCompanyDTO> CreateCompanyAsync(CreateCompanyDTO dto)
         {
-            var company = new Company
-            {
-                Name = dto.Name,
-                Industry = dto.Industry,
-                Location = dto.Location,
-                Email = dto.Email,
-                ContactNumber = dto.ContactNumber,
-                Website = dto.Website,
-                CreatedAt = DateTime.UtcNow
-            };
+            // AutoMapper converts DTO → Entity automatically
+            var company = _mapper.Map<Company>(dto);
+            company.CreatedAt = DateTime.UtcNow;
 
             await _companyRepo.AddAsync(company);
 
-            return new GetCompanyDTO
-            {
-                CompanyId = company.CompanyId,
-                Name = company.Name,
-                Industry = company.Industry,
-                Location = company.Location,
-                Email = company.Email,
-                ContactNumber = company.ContactNumber,
-                Website = company.Website,
-                CreatedAt = company.CreatedAt
-            };
+            // AutoMapper converts Entity → DTO automatically
+            return _mapper.Map<GetCompanyDTO>(company);
         }
 
         public async Task<bool> DeleteCompanyAsync(int id)
@@ -50,35 +37,13 @@ namespace APIJobPortal.Services
         public async Task<IEnumerable<GetCompanyDTO>> GetAllCompaniesAsync()
         {
             var companies = await _companyRepo.GetAllAsync();
-            return companies.Select(c => new GetCompanyDTO
-            {
-                CompanyId = c.CompanyId,
-                Name = c.Name,
-                Industry = c.Industry,
-                Location = c.Location,
-                Email = c.Email,
-                ContactNumber = c.ContactNumber,
-                Website = c.Website,
-                CreatedAt = c.CreatedAt
-            });
+            return _mapper.Map<IEnumerable<GetCompanyDTO>>(companies);
         }
 
         public async Task<GetCompanyDTO?> GetCompanyByIdAsync(int id)
         {
             var company = await _companyRepo.GetByIdAsync(id);
-            if (company == null) return null;
-
-            return new GetCompanyDTO
-            {
-                CompanyId = company.CompanyId,
-                Name = company.Name,
-                Industry = company.Industry,
-                Location = company.Location,
-                Email = company.Email,
-                ContactNumber = company.ContactNumber,
-                Website = company.Website,
-                CreatedAt = company.CreatedAt
-            };
+            return company == null ? null : _mapper.Map<GetCompanyDTO>(company);
         }
     }
 }

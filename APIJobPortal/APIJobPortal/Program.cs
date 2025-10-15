@@ -10,6 +10,8 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // DbContext
@@ -28,6 +30,8 @@ builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 // JWT settings
 var jwtSettings = builder.Configuration.GetSection("Jwt");

@@ -67,10 +67,11 @@ namespace APIJobPortal.Services
             });
         }
 
-        public async Task<GetJobDTO?> GetJobByIdAsync(int id)
+        public async Task<GetJobDTO> GetJobByIdAsync(int id)
         {
             var job = await _jobRepo.GetByIdAsync(id);
-            if (job == null) return null;
+            if (job == null)
+                throw new KeyNotFoundException($"Job with id {id} not found.");
 
             return new GetJobDTO
             {
