@@ -1,0 +1,138 @@
+/* Background & Layout */
+.register-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ef2fb9, #6c63ff);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+/* Glassmorphic Register Card */
+.register-card {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Title and Subtitle */
+.register-card h2 {
+  font-size: 26px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #e0e0e0;
+  margin-bottom: 25px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+  color: #f1f1f1;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 6px #2f4fef;
+  background: #fff;
+}
+
+/* Register Button */
+.register-btn {
+  background: #2f4fef;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-btn:hover {
+  background: #1e36c1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(47, 79, 239, 0.4);
+}
+
+/* Redirect link */
+.login-redirect {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.login-redirect a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-redirect a:hover {
+  color: #ffd76b;
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-card {
+    width: 90%;
+    padding: 30px 25px;
+  }
+
+  .register-card h2 {
+    font-size: 22px;
+  }
+}

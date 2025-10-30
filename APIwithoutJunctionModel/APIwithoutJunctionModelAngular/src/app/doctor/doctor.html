@@ -1,0 +1,57 @@
+<div class="doctor-container">
+  <h2 class="heading">🏥 Doctor Directory</h2>
+
+  <form (ngSubmit)="addDoctor()" *ngIf="auth.isAdmin()" class="add-doctor-form">
+    <input type="text" [(ngModel)]="newDoctor.name" name="name" placeholder="Doctor Name" required />
+    <input type="text" [(ngModel)]="newDoctor.specialty" name="specialty" placeholder="Specialty" required />
+    <input type="text" [(ngModel)]="newDoctor.hospital" name="hospital" placeholder="Hospital" required />
+    <button type="submit"  class="add-doctor-btn">Add Doctor</button>
+  </form>
+
+  <div class="doctor-grid">
+    <div class="doctor-card" *ngFor="let doctor of doctors">
+      <h3>ID: {{ doctor.doctorId }}</h3>
+
+      <div *ngIf="editingDoctorId !== doctor.doctorId; else editTemplate">
+        <h3>{{ doctor.name }}</h3>
+        <p><strong>Specialty:</strong> {{ doctor.specialty }}</p>
+        <p><strong>Hospital:</strong> {{ doctor.hospital }}</p>
+      </div>
+
+      <ng-template #editTemplate>
+        <input type="text" [(ngModel)]="doctor.name" placeholder="Name" />
+        <input type="text" [(ngModel)]="doctor.specialty" placeholder="Specialty" />
+        <input type="text" [(ngModel)]="doctor.hospital" placeholder="Hospital" />
+        <div class="edit-actions">
+          <button class="save-btn" (click)="updateDoctor(doctor)">💾 Save</button>
+          <button class="cancel-btn" (click)="cancelEdit()">❌ Cancel</button>
+        </div>
+      </ng-template>
+
+      <div class="patient-section">
+        <p><strong>Patients:</strong></p>
+        <ul *ngIf="doctor.patients?.length; else noPatients">
+          <li *ngFor="let patient of doctor.patients">{{ patient }}</li>
+        </ul>
+        <ng-template #noPatients>
+          <p class="no-patients">No patients assigned</p>
+        </ng-template>
+      </div>
+
+      <div class="action-buttons">
+        <button *ngIf="editingDoctorId !== doctor.doctorId && confirmingDeleteId !== doctor.doctorId"
+          class="edit-btn" (click)="startEdit(doctor.doctorId)">✏️ Edit</button>
+
+        <div *ngIf="confirmingDeleteId === doctor.doctorId; else deleteBtn" class="delete-confirm">
+          <button class="confirm-btn" (click)="deleteDoctor(doctor.doctorId)">✅ Confirm</button>
+          <button class="cancel-btn" (click)="cancelDelete()">❌ Cancel</button>
+        </div>
+
+        <ng-template #deleteBtn>
+          <button *ngIf="editingDoctorId !== doctor.doctorId"
+            class="delete-btn" (click)="confirmDelete(doctor.doctorId)">🗑️ Delete</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

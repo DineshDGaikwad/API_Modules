@@ -1,0 +1,140 @@
+.doctor-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f5f9ff, #e9f1ff);
+  min-height: 100vh;
+}
+
+.heading {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.add-doctor-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.add-doctor-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.add-doctor-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+.add-doctor-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-doctor-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Doctor Grid */
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+}
+
+.doctor-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-top: 4px solid #007bff;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.doctor-card h3 {
+  color: #1f3b73;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Edit Mode */
+.doctor-card input {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.edit-btn, .save-btn, .cancel-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.patient-section {
+  margin-top: 12px;
+  background: #f9fbff;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 3px solid #007bff;
+}
+
+.patient-section li {
+  font-size: 14px;
+  color: #333;
+}
+
+.no-patients {
+  color: gray;
+  font-style: italic;
+}

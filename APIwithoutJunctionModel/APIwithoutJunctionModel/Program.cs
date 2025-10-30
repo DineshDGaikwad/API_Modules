@@ -10,31 +10,28 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// -----------------------
+// ✅ Ensure configuration loads appsettings.json
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 // 1️⃣ Configure DbContext
-// -----------------------
 builder.Services.AddDbContext<DocPatDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// -----------------------
 // 2️⃣ Dependency Injection
-// -----------------------
 builder.Services.AddScoped<IDoctorRepo, DoctorRepository>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IUserRepo, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 
-// -----------------------
 // 3️⃣ Controllers & Swagger
-// -----------------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "DoctorPatientAPI", Version = "v1" });
 
-    // Add JWT support in Swagger
+    // JWT Support in Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -50,10 +47,10 @@ builder.Services.AddSwaggerGen(c =>
         {
             new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference 
-                { 
-                    Type = ReferenceType.SecurityScheme, 
-                    Id = "Bearer" 
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
                 }
             },
             new string[] {}
@@ -61,12 +58,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// -----------------------
 // 4️⃣ JWT Authentication
-// -----------------------
-
-
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -74,41 +66,51 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    var key = builder.Configuration["Jwt:Key"];
+    if (string.IsNullOrEmpty(key))
+        throw new Exception("JWT Key is missing from configuration!");
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ValidateLifetime = false,
-        ValidateIssuerSigningKey = false,
-        
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Key"]!)),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
     };
+});
+
+// Enable CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
 });
 
 builder.Services.AddAuthorization();
 
-// -----------------------
 // 5️⃣ Build App
-// -----------------------
 var app = builder.Build();
 
-// -----------------------
 // 6️⃣ Middleware Pipeline
-// -----------------------
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DoctorPatientAPI v1"));
+    app.UseSwaggerUI();
 }
 
+app.UseCors("AllowAngularApp");
 app.UseHttpsRedirection();
-
-app.UseAuthentication();   
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
-// -----------------------
 // 7️⃣ Run App
-// -----------------------
 app.Run();

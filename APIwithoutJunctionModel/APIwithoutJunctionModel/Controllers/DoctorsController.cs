@@ -7,7 +7,7 @@ namespace APIwithoutJunctionModel.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
@@ -17,6 +17,7 @@ namespace APIwithoutJunctionModel.Controllers
             _doctorService = doctorService;
         }
 
+        [Authorize(Roles = "Admin,Doctor")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -32,6 +33,7 @@ namespace APIwithoutJunctionModel.Controllers
             return Ok(doctor);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDocDTO dto)
         {
@@ -39,6 +41,7 @@ namespace APIwithoutJunctionModel.Controllers
             return CreatedAtAction(nameof(GetById), new { id = doctor.DoctorId }, doctor);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] CreateDocDTO dto)
         {
