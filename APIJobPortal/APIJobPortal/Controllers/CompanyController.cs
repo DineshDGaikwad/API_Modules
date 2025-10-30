@@ -33,7 +33,7 @@ namespace APIJobPortal.Controllers
         }
 
         // Protected endpoints (only companies can create/delete)
-        [Authorize(Roles = "Company")]
+       // [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateCompany([FromBody] CreateCompanyDTO dto)
         {
@@ -41,7 +41,7 @@ namespace APIJobPortal.Controllers
             return CreatedAtAction(nameof(GetCompanyById), new { id = company.CompanyId }, company);
         }
 
-        [Authorize(Roles = "Company")]
+        //[Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany(int id)
         {

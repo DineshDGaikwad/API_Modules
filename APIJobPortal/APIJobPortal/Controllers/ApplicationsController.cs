@@ -16,7 +16,7 @@ namespace APIJobPortal.Controllers
             _applicationService = applicationService;
         }
         
-        [Authorize(Roles = "Company,JobSeeker")]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateApplicationDTO dto)
         {

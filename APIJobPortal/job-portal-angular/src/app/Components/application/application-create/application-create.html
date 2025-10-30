@@ -1,0 +1,29 @@
+<div class="form-container">
+  <h2>🚀 Apply for a Job</h2>
+
+  <form [formGroup]="applicationForm" (ngSubmit)="createApplication()" novalidate>
+    <div class="form-group">
+      <label>Job Seeker ID</label>
+      <input formControlName="jobSeekerId" type="number" placeholder="Enter your JobSeeker ID" />
+    </div>
+
+    <div class="form-group">
+      <label>Job ID</label>
+      <input formControlName="jobId" type="number" placeholder="Enter Job ID" />
+    </div>
+
+    <div class="form-group">
+      <label>Cover Letter</label>
+      <textarea formControlName="coverLetter" placeholder="Write a short cover letter"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Resume Link</label>
+      <input formControlName="resumeLink" type="text" placeholder="Paste your resume link (e.g., Google Drive / LinkedIn)" />
+    </div>
+
+    <button type="submit" [disabled]="applicationForm.invalid">
+      <i class="fas fa-paper-plane"></i> Submit Application
+    </button>
+  </form>
+</div>

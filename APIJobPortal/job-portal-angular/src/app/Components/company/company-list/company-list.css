@@ -1,0 +1,83 @@
+.company-list-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.heading {
+  text-align: center;
+  color: #1f3b73;
+  font-family: "Dancing Script", cursive;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.company-card {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(31, 59, 115, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.company-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(31, 59, 115, 0.15);
+}
+
+.company-info {
+  text-align: center;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f3b73;
+  font-family: "Dancing Script", cursive;
+}
+
+.location {
+  color: #555;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.industry {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .company-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .company-card {
+    padding: 18px;
+  }
+
+  .name {
+    font-size: 20px;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+}

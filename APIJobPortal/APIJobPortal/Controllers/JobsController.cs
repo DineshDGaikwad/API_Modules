@@ -16,7 +16,7 @@ namespace APIJobPortal.Controllers
             _jobService = jobService;
         }
         
-        [Authorize(Roles = "JobSeeker")]
+        //[Authorize(Roles = "JobSeeker")]
         [HttpGet]
         public async Task<IActionResult> GetAllJobs()
         {
@@ -31,7 +31,7 @@ namespace APIJobPortal.Controllers
             return Ok(job);
         }
 
-        [Authorize(Roles = "Company")]
+       // [Authorize(Roles = "Company")]
         [HttpPost]
         public async Task<IActionResult> CreateJob([FromBody] CreateJobDTO dto)
         {

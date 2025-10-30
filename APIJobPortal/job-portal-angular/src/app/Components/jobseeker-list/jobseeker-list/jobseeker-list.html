@@ -1,0 +1,32 @@
+<div class="jobseeker-list-container">
+  <h2 class="heading">Registered Job Seekers</h2>
+
+  <ng-container *ngIf="jobSeekers.length > 0; else noSeekers">
+    <div class="jobseeker-grid">
+      <div *ngFor="let seeker of jobSeekers" class="jobseeker-card">
+        <div class="card-header">
+          <h3 class="seeker-name">{{ seeker.fullName }}</h3>
+          <span class="exp-badge">{{ seeker.experienceYears }} yrs exp</span>
+        </div>
+
+        <div class="details">
+          <p><i class="fa fa-envelope"></i> {{ seeker.email }}</p>
+          <p><i class="fa fa-phone"></i> {{ seeker.phoneNumber || 'N/A' }}</p>
+          <p><i class="fa fa-map-marker-alt"></i> {{ seeker.address || 'N/A' }}</p>
+          <p><i class="fa fa-code"></i> {{ seeker.skills || 'N/A' }}</p>
+        </div>
+
+        <a *ngIf="seeker.resumeLink" href="{{ seeker.resumeLink }}" target="_blank" class="resume-btn">
+          <i class="fa fa-file-alt"></i> View Resume
+        </a>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noSeekers>
+    <div class="empty-state">
+      <i class="fa fa-user-slash"></i>
+      <p>No job seekers found yet. 👀</p>
+    </div>
+  </ng-template>
+</div>
