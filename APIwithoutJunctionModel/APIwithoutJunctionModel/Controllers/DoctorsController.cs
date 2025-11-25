@@ -17,8 +17,9 @@ namespace APIwithoutJunctionModel.Controllers
             _doctorService = doctorService;
         }
 
-        [Authorize(Roles = "Admin,Doctor")]
+        //[Authorize(Roles = "Admin,Doctor")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             var doctors = await _doctorService.GetAllAsync();
@@ -33,7 +34,7 @@ namespace APIwithoutJunctionModel.Controllers
             return Ok(doctor);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDocDTO dto)
         {
@@ -41,7 +42,7 @@ namespace APIwithoutJunctionModel.Controllers
             return CreatedAtAction(nameof(GetById), new { id = doctor.DoctorId }, doctor);
         }
 
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] CreateDocDTO dto)
         {
